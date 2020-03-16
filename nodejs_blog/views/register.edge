@@ -1,0 +1,75 @@
+@layout('layouts/app')
+
+
+@section('content')
+
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+          @if(errors.length>0)
+            <ul class="list-group">
+              @each(error in errors)
+                <li class="list-group-item text-danger">{{error}}</li>
+              @endeach
+              <!-- password chai maile xutai rakheko xu
+              password filed chai pass vayena js page bata
+            as hashedpassword pailai nai initialize garna pariyo
+                <li class="list-group-item text-danger">Please provide your password</li>
+          -->
+              
+            </ul>
+          @endif
+<form action="/register" method="POST">
+    <div class="control-group">
+      <div class="form-group floating-label-form-group controls">
+          <label>Name</label>
+      <input type="text" placeholder="Name"  value="{{data.name || ''}}" name="name" class="form-control">
+      </div>
+    </div>
+    <div class="control-group">
+        <div class="form-group floating-label-form-group controls">
+            <label>Email</label>
+        <input type="email" placeholder="Email" value="{{data.email || ''}}"  name="email" class="form-control" >
+            
+        </div>
+    </div>
+      <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+              <label>Password</label>
+              <input type="password" placeholder="Password"  name="password" class="form-control">
+              <p class="help-block text-danger"></p>
+          </div>
+      </div>
+      
+
+      
+      <div class="form-group my-4 text-center">
+          <button class="btn btn-primary">Register</button>
+      </div>
+      <div class="form-group my-4 text-center">
+          <a href="/login">Login</a>
+      </div>
+  </form>
+
+        </div>
+    </div>
+</div>
+
+
+@endsection
+
